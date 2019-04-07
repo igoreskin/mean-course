@@ -6,7 +6,7 @@ const Post = require('./models/post');
 
 const app = express();
 
-mongoose.connect("mongodb+srv://igoreskin:MongoDB20@cluster0-kbdpm.mongodb.net/test?retryWrites=true")
+mongoose.connect("mongodb+srv://igoreskin:MongoDB20@cluster0-kbdpm.mongodb.net/node-angular?retryWrites=true")
 .then(() => {
     console.log('Connected to database');
 })
@@ -30,6 +30,7 @@ app.post("/api/posts", (req, res, next) => {
         content: req.body.content
     });
     console.log(post);
+    post.save();
     res.status(201).json({
         message: 'Post added successfully'
     });
